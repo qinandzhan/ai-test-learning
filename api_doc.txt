@@ -1,0 +1,20 @@
+接口名称：创建 VIP 专属订单
+URL: https://api.shop.com/api/v2/orders/vip_create
+Method: POST
+
+【Headers 严格要求】
+1. Authorization: Bearer <Token>
+2. X-Request-Timestamp: 必须是当前时间的 Unix 时间戳（整数，例如 1712390000）
+
+【Body 参数要求 (JSON)】
+1. user_id: 字符串（必须）
+2. total_amount: 浮点数（必须严格大于 10000.00，否则会报错）
+3. item_list: 数组（必须包含至少一个商品），格式为 [{"sku": "string", "quantity": int}]
+
+【Response 返回说明】
+1. 成功返回：
+   - HTTP 状态码必须是 201 Created （注意：不是 200！）
+   - 返回体：{"err_no": 0, "data": {"order_id": "VIP-12345"}} （注意：成功标识字段叫 err_no，不是 code！）
+2. 失败返回：
+   - HTTP 状态码 400 Bad Request
+   - 返回体：{"err_no": 4001, "error_msg": "金额不足或参数错误"}

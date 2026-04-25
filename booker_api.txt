@@ -1,0 +1,18 @@
+基础域名: https://restful-booker.herokuapp.com
+
+1. 创建订单 (CreateBooking)
+- 接口路径: POST /booking
+- 请求头: Content-Type: application/json
+- 请求体参数: {"firstname": "Jim", "lastname": "Brown", "totalprice": 111, "depositpaid": true, "bookingdates": {"checkin": "2024-01-01", "checkout": "2024-01-10"}, "additionalneeds": "Breakfast"}
+- 成功响应: 200 OK，返回 bookingid。
+
+2. 查询订单 (GetBooking)
+- 接口路径: GET /booking/{id}
+- 请求头: Accept: application/json
+- 成功响应: 200 OK。
+
+3. 删除订单 (DeleteBooking)
+- 接口路径: DELETE /booking/{id}
+- 请求头: Content-Type: application/json
+- 请求头 (鉴权必须): Authorization: Basic YWRtaW46cGFzc3dvcmQxMjM=
+- 成功响应: 201 Created (注意：这个奇葩接口删除成功返回的是 201)。

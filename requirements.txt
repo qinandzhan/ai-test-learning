@@ -1,1 +1,5 @@
 openai
+pytest
+requests
+responses
+pytest-html
